@@ -129,24 +129,24 @@ func TestInsertAtPosition(t *testing.T) {
 	testCases := map[string]func(t *testing.T, s *SinglyLinkedList[int]){
 
 		"InvalidPositionShouldReturnError": func(t *testing.T, s *SinglyLinkedList[int]) {
-			err := s.InsertAtPosition(10, 100)
+			err := s.InsertAtPosition(100, 10)
 			assert.EqualError(t, err, ErrInvalidPosition.Error())
 		},
-		"InsertAtPosition1WhenItsEmptyDataShouldBeOnHeadAndTail": func(t *testing.T, s *SinglyLinkedList[int]) {
-			err := s.InsertAtPosition(10, 1)
+		"InsertAtPositionOneWhenItsEmptyDataShouldBeEqualWithData": func(t *testing.T, s *SinglyLinkedList[int]) {
+			err := s.InsertAtPosition(1, 10)
 			assert.NoError(t, err)
+			assert.Equal(t, s.head, s.tail)
 			assert.Equal(t, 10, s.head.data)
-			assert.Equal(t, 10, s.tail.data)
 		},
 		"InsertAtPosition1ShouldBeOnHead": func(t *testing.T, s *SinglyLinkedList[int]) {
-			err := s.InsertAtPosition(10, 1)
+			err := s.InsertAtPosition(1, 10)
 			assert.NoError(t, err)
 
 			assert.Equal(t, 10, s.head.data)
 		},
 		"InsertValueAtNth": func(t *testing.T, s *SinglyLinkedList[int]) {
 			// insert some data on list
-			err := s.InsertAtPosition(10, 1)
+			err := s.InsertAtPosition(1, 10)
 			assert.NoError(t, err)
 			for i := 1; i <= 5; i++ {
 				err = s.InsertAtPosition(i, i)
@@ -155,7 +155,7 @@ func TestInsertAtPosition(t *testing.T) {
 
 			// insert a value at valid nth pos
 			n, data := 3, 100
-			err = s.InsertAtPosition(data, n)
+			err = s.InsertAtPosition(n, data)
 			assert.NoError(t, err)
 
 			temp := s.head
