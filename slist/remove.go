@@ -117,3 +117,11 @@ func (s *SinglyLinkedList[T]) RemoveByPosition(position int) error {
 	s.length--
 	return nil
 }
+
+// To remove all data in the linked list
+func (s *SinglyLinkedList[T]) RemoveAll() {
+
+	s.head = nil
+	s.tail = nil
+	s.length = 0
+}

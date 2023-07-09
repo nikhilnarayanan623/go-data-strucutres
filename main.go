@@ -1,6 +1,10 @@
 package main
 
-import "github.com/nikhilnarayanan623/go-data-strucutres/slist"
+import (
+	"fmt"
+
+	"github.com/nikhilnarayanan623/go-data-strucutres/slist"
+)
 
 func main() {
 
@@ -17,4 +21,13 @@ func DisplaySinglyLinkedList() {
 
 	s.PrintAll()
 	s.PrintAllReverse()
+}
+
+func CheckSinglyLinkedListExistData() {
+
+	arr := []string{"hii", "hello", "hey"}
+
+	s := slist.SliceToLinkedList(arr)
+
+	fmt.Println("exist", s.IsDataExist("hii"))
 }
